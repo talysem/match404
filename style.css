@@ -1,0 +1,290 @@
+@font-face {
+    font-family: 'Tusker Grotesk Super';
+    src: url('fonts/TuskerGrotesk-8800Super.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Tusker Grotesk Semibold';
+    src: url('fonts/TuskerGrotesk-3600Semibold.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'Tusker Grotesk Bold';
+    src: url('fonts/TuskerGrotesk-5600Semibold.otf') format('opentype');
+}
+
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 140%;
+    color: #FFF;
+    transition: .3s;
+    user-select: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    background-color: #000;
+}
+
+header,
+footer {
+    width: 100%;
+    height: 10dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-family: 'Tusker Grotesk Bold';
+}
+
+main {
+    width: 100%;
+    height: 80dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+:root {
+    --imageLeftActualItem: 0;
+    --imageLeftTansform: calc(-100% * var(--imageLeftActualItem));
+}
+
+#card_Box {
+    width: 94%;
+    max-width: 380px;
+    aspect-ratio: 9/16;
+    background-color: #101010;
+    border-radius: 40px;
+    border: solid 1px rgba(255, 255, 255, 0.5);
+    overflow: hidden;
+    position: relative;
+    filter: drop-shadow(0 0 30px rgba(255, 255, 255, .3));
+}
+
+#imgs {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    aspect-ratio: 9/16;
+    transform: translateX(var(--imageLeftTansform));
+    transition: none;
+}
+
+#about {
+    width: 100%;
+    height: 40%;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0) 100%);
+    position: absolute;
+    bottom: 0px;
+    padding: 20px;
+    padding-top: 10%;
+    padding-bottom: 120px;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 10px;
+
+    & h2 {
+        font-size: 36px;
+        font-family: 'Tusker Grotesk Bold';
+    }
+
+    & h3 {
+        font-size: 28px;
+        font-family: 'Tusker Grotesk Semibold';
+    }
+
+    & p {
+        -webkit-line-clamp: 2;
+        line-clamp: 2;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        font-size: 15px;
+        transition: none;
+    }
+}
+
+#about.opened {
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    gap: 20px;
+
+    & p {
+        display: flex;
+    }
+}
+
+#about.opened #verMaisButton {
+    transform: rotate(180deg);
+}
+
+#name {
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: baseline;
+    gap: 10px;
+    position: relative;
+}
+
+#verMaisButton {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #FFF;
+    cursor: pointer;
+    position: absolute;
+    top: calc(50% - 16px);
+    right: 0;
+
+    & svg {
+        width: auto;
+        height: 16px;
+    }
+}
+
+#tags_box {
+    width: 100%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 6px;
+}
+
+.tags {
+    padding: 4px 12px;
+    background-color: #FFF;
+    border-radius: 8px;
+    color: #000;
+    font-size: 14px;
+}
+
+#buttons {
+    width: 100%;
+    min-height: 50px;
+    padding: 10px 0;
+    position: absolute;
+    bottom: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.button {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    border: solid 1px rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #101010;
+    cursor: pointer;
+
+    & svg {
+        width: 32px;
+    }
+
+    &:hover {
+        transform: scale(1.1);
+    }
+}
+
+#unlikeButton {
+    background: linear-gradient(315deg, rgba(255, 71, 45, 1) 0%, rgba(255, 233, 5, 1) 100%);
+
+    & svg {
+        width: 24px;
+    }
+
+    &:hover {
+        filter: drop-shadow(0 0 10px rgba(255, 71, 45, 1));
+    }
+}
+
+#superStarButton {
+    background: linear-gradient(0deg, rgba(0, 135, 251, 1) 0%, rgba(0, 204, 255, 1) 100%);
+    margin-bottom: 25px;
+
+    &:hover {
+        filter: drop-shadow(0 0 10px rgba(0, 204, 255, 1));
+    }
+}
+
+#loveButton {
+    background: linear-gradient(45deg, rgba(255, 18, 0, 1) 0%, rgba(255, 0, 194, 1) 100%);
+
+    &:hover {
+        filter: drop-shadow(0 0 10px rgba(255, 18, 0, 1));
+    }
+}
+
+#passImgButtons {
+    width: 100%;
+    height: 60%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-flow: row;
+}
+
+.passNbackButton {
+    width: 50%;
+    height: 100%;
+    cursor: pointer;
+}
+
+#infos {
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    background-color: #FFF;
+    padding: 15px 20px;
+    border-radius: 20px;
+
+    & h3 {
+        color: #000;
+    }
+}
+
+.infos_line {
+    width: 100%;
+    width: 100%;
+    display: flex;
+    flex-flow: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-top: solid 1px rgba(0, 0, 0, 0.5);
+
+    & svg {
+        width: auto;
+        height: 16px;
+    }
+
+    & p {
+        color: #000;
+        font-size: 16px;
+    }
+}
