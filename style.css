@@ -28,6 +28,7 @@
     color: #FFF;
     transition: .3s;
     user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
 
 img {
