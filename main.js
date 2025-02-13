@@ -34,8 +34,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
+    let cards = document.querySelectorAll('#card_Box')
+
     function swipeDireita() {
         viewModel.likeThat()
+        let valor = cards.length
+        viewModel.abrirLinkLike(valor)
     }
     
     function swipeEsquerda() {
@@ -44,5 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     function swipeCima() {
         viewModel.superLike()
+        let valor = cards.length
+        viewModel.abrirLinkSuperLike(valor)
     }
 });
