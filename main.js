@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function swipeDireita() {
         viewModel.likeThat()
-        let valor = cards.length
+        let valor = cards.length - 1
         viewModel.abrirLinkLike(valor)
     }
     
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     
     function swipeCima() {
         viewModel.superLike()
-        let valor = cards.length
+        let valor = cards.length - 1
         viewModel.abrirLinkSuperLike(valor)
     }
 });
