@@ -13,6 +13,12 @@
     src: url('fonts/TuskerGrotesk-5600Semibold.otf') format('opentype');
 }
 
+:root {
+    --imageLeftActualItem: 0;
+    --imageLeftTansform: calc(-100% * var(--imageLeftActualItem));
+
+    --neonColor: rgba(0, 0, 0, 1)
+}
 
 * {
     margin: 0;
@@ -22,8 +28,6 @@
     color: #FFF;
     transition: .3s;
     user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    tap-highlight-color: transparent;
 }
 
 img {
@@ -32,6 +36,8 @@ img {
 
 body {
     background-color: #000;
+    overflow: hidden;
+    box-shadow: inset 0px 0px 20px 10px var(--neonColor);
 }
 
 header,
@@ -49,15 +55,10 @@ h1 {
 
 main {
     width: 100%;
-    height: 80dvh;
+    min-height: 90dvh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-:root {
-    --imageLeftActualItem: 0;
-    --imageLeftTansform: calc(-100% * var(--imageLeftActualItem));
 }
 
 #card_Box {
@@ -68,8 +69,27 @@ main {
     border-radius: 40px;
     border: solid 1px rgba(255, 255, 255, 0.5);
     overflow: hidden;
-    position: relative;
-    filter: drop-shadow(0 0 30px rgba(255, 255, 255, .3));
+    animation: none;
+    position: absolute;
+    z-index: 100;
+    transform: rotate(0deg) translate(0);
+    will-change: transform;
+}
+
+#card_Box.liked {
+    animation: swipeRight .6s forwards ease-out;
+}
+
+#card_Box.unliked {
+    animation: swipeLeft .6s forwards ease-out;
+}
+
+#card_Box.superliked {
+    animation: swipeUp 1.5s forwards ease-out;
+}
+
+#card_Box:first-of-type {
+    opacity: 0;
 }
 
 #imgs {
@@ -85,7 +105,7 @@ main {
 #about {
     width: 100%;
     height: 40%;
-    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 30%, rgba(0, 0, 0, 0) 100%);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.9) 50%, rgba(0, 0, 0, 0) 100%);
     position: absolute;
     bottom: 0px;
     padding: 20px;
@@ -288,5 +308,56 @@ main {
     & p {
         color: #000;
         font-size: 16px;
+    }
+}
+
+
+
+
+
+
+@keyframes swipeRight {
+    0% {
+        transform: rotate(0deg) translateX(0);
+    }
+    
+    100% {
+        transform: rotate(20deg) translateX(170dvw);
+    }
+}
+
+@keyframes swipeLeft {
+    0% {
+        transform: rotate(0deg) translateX(0);
+    }
+    
+    100% {
+        transform: rotate(-20deg) translateX(-170dvw);
+    }
+}
+
+@keyframes swipeUp {
+    0% {
+        transform: rotate(0deg) translateY(0) scale(1);
+    }
+
+    15% {
+        transform: rotate(0deg) translateY(0) scale(0.95);
+    }
+
+    30% {
+        transform: rotate(0deg) translateY(0) scale(1.05);
+    }
+    
+    50% {
+        transform: rotate(0deg) translateY(0) scale(1);
+    }
+    
+    75% {
+        transform: rotate(0deg) translateY(0) scale(1);
+    }
+    
+    100% {
+        transform: rotate(0deg) translateY(-150dvh) scale(1);
     }
 }

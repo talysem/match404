@@ -11,6 +11,8 @@ function mainContent() {
             interesses: ['Hétero', 'Futebol', 'Militarismo', 'Pesca', 'Colorado', 'Academia'],
             img1: 'imgs/jose-img1.jpeg',
             img2: 'imgs/jose-img2.jpeg',
+            contatoLike: 'https://api.whatsapp.com/send?phone=5551996369083&text=Oi%2C%20tudo%3F%20Te%20vi%20no%20match404%20e%20gostei%20de%20voc%C3%AA!',
+            contatoSuperLike: 'https://api.whatsapp.com/send?phone=5551996369083&text=*Come%C3%A7a%20tocar%20Careless%20Whisper%0A%0AOl%C3%A1%2C%20saboroso!%20Como%20vai%20o%20seu%20dia%3F%20Espero%20que%20t%C3%A3o%20gostoso%20quanto%20voc%C3%AA!%20Te%20vi%20no%20match404%20e%20espero%20que%20possamos%20nos%20conhecer%20melhor...',
             descricao: 'Aventureiro de 24 anos, apaixonado por tecnologia, ciência e bons livros. Sempre pronto para uma conversa inteligente ou uma maratona de séries. Se você curte debates sobre o universo, cultura geek ou simplesmente rir de memes aleatórios, já temos algo em comum. Bora conversar?'
         },
         {
@@ -21,6 +23,8 @@ function mainContent() {
             interesses: ['Panssexual', 'Professor', 'Harry Potter', 'Viajar', 'Gremista', 'Academia'],
             img1: 'imgs/gilvane-img1.jpeg',
             img2: 'imgs/gilvane-img2.jpeg',
+            contatoLike: 'https://api.whatsapp.com/send?phone=5561991045699&text=Oi%2C%20tudo%3F%20Te%20vi%20no%20match404%20e%20gostei%20de%20voc%C3%AA!',
+            contatoSuperLike: 'https://api.whatsapp.com/send?phone=5561991045699&text=*Come%C3%A7a%20tocar%20Careless%20Whisper%0A%0AOl%C3%A1%2C%20saboroso!%20Como%20vai%20o%20seu%20dia%3F%20Espero%20que%20t%C3%A3o%20gostoso%20quanto%20voc%C3%AA!%20Te%20vi%20no%20match404%20e%20espero%20que%20possamos%20nos%20conhecer%20melhor...',
             descricao: 'Professor de inglês, amante de viagens e livros. Já explorei diversos países e cada destino me trouxe uma nova história para contar. Sempre pronto para uma boa conversa sobre literatura, cultura ou a próxima aventura. Que tal trocarmos algumas palavras... ou planejarmos uma viagem?'
         }
     ])
@@ -75,6 +79,80 @@ function mainContent() {
         }
     }
 
+    self.likeThat = function () {
+        var mainContent = document.querySelector('#mainContent')
+        var cardAtual = document.querySelectorAll('#card_Box')
+
+        document.documentElement.style.setProperty('--neonColor', 'rgba(255, 0, 194, 1)')
+        cardAtual[cardAtual.length - 1].style.border = 'solid 3px rgba(255, 0, 194, 1)'
+
+        cardAtual[cardAtual.length - 1].classList.add('liked')
+        self.nextUser()
+        
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--neonColor', 'rgba(0, 0, 0, 1)')
+            cardAtual[cardAtual.length - 1].style.border = 'solid 1px rgba(255, 255, 255, 0.5)'
+        }, 250);
+        
+        setTimeout(() => {
+            cardAtual[cardAtual.length - 1].classList.remove('liked')
+            mainContent.prepend(cardAtual[cardAtual.length - 1])
+        }, 500);
+    }
+
+    self.unlikeThat = function () {
+        var mainContent = document.querySelector('#mainContent')
+        var cardAtual = document.querySelectorAll('#card_Box')
+
+        document.documentElement.style.setProperty('--neonColor', 'rgba(255, 71, 45, 1)')
+        cardAtual[cardAtual.length - 1].style.border = 'solid 3px rgba(255, 71, 45, 1)'
+
+        cardAtual[cardAtual.length - 1].classList.add('unliked')
+        self.nextUser()
+        
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--neonColor', 'rgba(0, 0, 0, 1)')
+            cardAtual[cardAtual.length - 1].style.border = 'solid 1px rgba(255, 255, 255, 0.5)'
+        }, 250);
+
+        setTimeout(() => {
+            cardAtual[cardAtual.length - 1].classList.remove('unliked')
+            mainContent.prepend(cardAtual[cardAtual.length - 1])
+        }, 500);
+    }
+
+    self.superLike = function () {
+        var mainContent = document.querySelector('#mainContent')
+        var cardAtual = document.querySelectorAll('#card_Box')
+
+        document.documentElement.style.setProperty('--neonColor', 'rgba(0, 204, 255, 1)')
+        cardAtual[cardAtual.length - 1].style.border = 'solid 3px rgba(0, 204, 255, 1)'
+        
+        cardAtual[cardAtual.length - 1].classList.add('superliked')
+        self.nextUser()
+        
+        setTimeout(() => {
+            document.documentElement.style.setProperty('--neonColor', 'rgba(0, 0, 0, 1)')
+            cardAtual[cardAtual.length - 1].style.border = 'solid 1px rgba(255, 255, 255, 0.5)'
+        }, 500);
+
+        setTimeout(() => {
+            cardAtual[cardAtual.length - 1].classList.remove('superliked')
+            mainContent.prepend(cardAtual[cardAtual.length - 1])
+        }, 1600);
+    }
+
+    self.abrirLinkLike = function(selecao) {
+        setTimeout(() => {
+            window.location.href = self.usuario()[selecao].contatoLike;
+        }, 500);
+    }
+
+    self.abrirLinkSuperLike = function(selecao) {
+        setTimeout(() => {
+            window.location.href = self.usuario()[selecao].contatoSuperLike;
+        }, 1500);
+    }
 }
 
 const ajustarAqui_mainContent = document.querySelector("#mainContent");
