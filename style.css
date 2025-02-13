@@ -62,13 +62,15 @@ main {
 }
 
 #card_Box {
-    width: 94%;
+    width: 90%;
     max-width: 380px;
     aspect-ratio: 9/16;
     background-color: #101010;
     border-radius: 40px;
     border: solid 1px rgba(255, 255, 255, 0.5);
-    overflow: hidden;
+    display: flex;
+    justify-content: center;
+
     animation: none;
     position: absolute;
     z-index: 100;
@@ -88,8 +90,18 @@ main {
     animation: swipeUp 1.5s forwards ease-out;
 }
 
-#card_Box:first-of-type {
+#card_Box:is(:not(:last-of-type)) {
     opacity: 0;
+}
+
+.festinha_tag {
+    padding: 5px 15px;
+    border-radius: 8px;
+    background-color: rgb(60, 0, 78);
+    position: absolute;
+    top: -10px;
+    z-index: 100;
+    font-weight: 600;
 }
 
 #imgs {
@@ -98,6 +110,11 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     aspect-ratio: 9/16;
+    overflow: hidden;
+    border-radius: 40px;
+}
+
+#imgs img {
     transform: translateX(var(--imageLeftTansform));
     transition: none;
 }
@@ -116,6 +133,7 @@ main {
     justify-content: flex-start;
     align-items: flex-start;
     gap: 10px;
+    border-radius: 0 0 40px 40px;
 
     & h2 {
         font-size: 36px;
@@ -142,6 +160,7 @@ main {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     gap: 20px;
+    border-radius: 40px;
 
     & p {
         display: flex;
