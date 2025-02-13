@@ -1,3 +1,5 @@
+var viewModel = ko.contextFor(document.getElementById("mainContent")).$data;
+
 document.addEventListener("DOMContentLoaded", function () {
     let startX, startY, endX, endY;
 
@@ -33,17 +35,14 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function swipeDireita() {
-        alert("👉 Swipe para a DIREITA!");
-        // Coloque aqui a ação desejada
+        viewModel.likeThat()
     }
-
+    
     function swipeEsquerda() {
-        alert("👈 Swipe para a ESQUERDA!");
-        // Coloque aqui a ação desejada
+        viewModel.unlikeThat()
     }
-
+    
     function swipeCima() {
-        alert("👆 Swipe para CIMA!");
-        // Coloque aqui a ação desejada
+        viewModel.superLike()
     }
 });
